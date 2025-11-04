@@ -8,8 +8,8 @@ export default function Figure({ figure, handleMove }) {
     }
     
     let style = {
-        'left': `${figure.x}px`,
-        'top': `${figure.y}px`
+        'left': `${figure.x}%`,
+        'top': `${figure.y}%`
     }
 
     return (

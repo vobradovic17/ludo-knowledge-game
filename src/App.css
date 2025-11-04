@@ -1,5 +1,6 @@
 #root {
   position: relative;
+  width: 100%;
   max-width: 776px;
   margin: 0 auto;
   border: 1px solid #e0e0e0;
@@ -104,9 +105,8 @@
 
 .lkg-board {
   position: relative;
-  width: 776px;
-  height: 776px;
   margin: auto;
+  padding-bottom: 100%;
   text-align: center;
 
   background-image: url('./assets/ludo_safari.jpg');
@@ -132,8 +132,8 @@
 
 .lkg-figure {
   position: absolute;
-  width: 50px;
-  height: 50px;
+  width: 6.44%;
+  height: 6.44%;
   transition: all 0.2s, top 0.7s, left 0.7s;
 }
 
@@ -186,5 +186,20 @@
 }
 
 .lkg-game-over__reset {
-  margin-bottom: 244px;
+  margin-bottom: 32%;
+}
+
+@media (max-width: 767px) {
+  .lkg-playerboard__team--active {
+    flex-basis: 100%;
+  }
+
+  .lkg-playerboard__team:not(.lkg-playerboard__team--active) {
+    display: none
+  }
+
+  .lkg-game-over__message {
+    font-size: 24px;
+  }
+
 }
