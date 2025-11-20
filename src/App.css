@@ -168,6 +168,221 @@
   }
 }
 
+.lkg-dialog {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .4);
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+}
+
+.dialog-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  top: -1%;
+  width: 80%;
+  height: 60%;
+  margin: 20% auto 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+  animation-name: scale-in;
+  animation-duration: 0.3s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-timing-function: linear;
+}
+
+@keyframes scale-in {
+  0% {
+    transform: scale(0.01) translateY(-100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.lkg-dialog__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 60px;
+  padding: 0 16px;
+  background-color: #fff;
+
+  span {
+    font-size: 24px;
+  }
+}
+
+.lkg-dialog__header--player1 {
+  background: linear-gradient(to right, #ee1c25, #ff3546 90%)
+}
+
+.lkg-dialog__header--player2 {
+  background: linear-gradient(to right, #2e3192, #575dff 90%)
+}
+
+.lkg-dialog__header--player3 {
+  background: linear-gradient(to right, #71bf45, #b2e64a 90%)
+}
+
+.lkg-dialog__header--player4 {
+  background: linear-gradient(to right, #fef200, #ffff00 90%)
+}
+
+.lkg-dialog__dice-wrapper {
+  width: 54px;
+  height: 54px;
+}
+
+.lkg-dialog__body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow-y: auto;
+  background: linear-gradient(#d6dceb, #eaeaea 90%);
+}
+
+.lkg-dialog__word {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  flex-grow: 1;
+  height: auto;
+  width: 100%;
+}
+
+.lkg-dialog__description {
+  margin-top: 8%;
+  margin-bottom: 4%;
+  padding: 0 16px;
+  text-align: left;
+  font-size: 24px;
+}
+
+.lkg-dialog__guess-word {
+  display: flex;
+  justify-content: center;
+  gap: 2%;
+  width: 100%;
+  margin-bottom: 6%;
+  transition: gap 0.2s;
+
+  & span:first-child {
+    text-transform: capitalize;
+  }
+
+  & span {
+    width: 32px;
+    font-size: 36px;
+    border-bottom: 4px solid black;
+  }
+
+  &.lkg-dialog__guess-word--submitted {
+    gap: 0;
+
+    & span:last-child {
+      position: relative;
+    }
+
+    & span:last-child:after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      top: -16px;
+      right: -32px;
+      border-radius: 8px;
+    }
+  }
+
+  &.lkg-dialog__guess-word--correct {
+    & span {
+      border-bottom: 4px solid #51861a;
+    }
+
+    & span:last-child:after {
+      background-image: url('./assets/check-mark.svg');
+      background-size: 18px 18px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #51861a;
+    } 
+  }
+
+  &.lkg-dialog__guess-word--wrong {
+    & span {
+      border-bottom: 4px solid #ca041c;
+    }
+
+    & span:last-child:after {
+      background-image: url('./assets/cross-mark.svg');
+      background-size: 18px 18px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #ca041c;
+    } 
+  }
+}
+
+.lkg-dialog__input {
+  margin-bottom: 15px;
+
+  input {
+    padding: 8px 12px;
+    border-radius: 12px;
+    font-size: 16px;
+  }
+}
+
+.lkg-dialog__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+  background-color: #fff;
+  border-top: 1px solid #000;
+}
+
+.lkg-dialog__button {
+  padding: 8px 24px;
+  border: 1px solid #000;
+
+
+  &:hover {
+    box-shadow: 0 0 1px 1px #000;
+    border-color: #000;
+    background-color: #eaeaea;
+  }
+
+  &.lkg-dialog__button--correct {
+    border: 1px solid #51861a;
+    box-shadow: 0 0 1px 2px #51861a;
+    color: #51861a;
+    background-color: #fff;
+    outline: 0;
+  }
+
+  &.lkg-dialog__button--wrong {
+    border: 1px solid #ca041c;
+    box-shadow: 0 0 1px 2px #ca041c;
+    color: #ca041c;
+    background-color: #fff;
+    outline: 0;
+  }
+
+}
+
 .lkg-game-over {
   position: absolute;
   width: 100%;
@@ -198,8 +413,60 @@
     display: none
   }
 
+  .lkg-dialog__header {
+    display: none;
+  }
+
   .lkg-game-over__message {
     font-size: 24px;
   }
 
+}
+
+@media (max-width: 639px) {
+  .lkg-dialog__description {
+    font-size: 22px;
+  }
+
+  .lkg-dialog__guess-word {
+    span {
+      width: 28px;
+      font-size: 28px;
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .lkg-dialog {
+    border: 0;
+  }
+
+  .dialog-wrapper {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .lkg-dialog__description {
+    font-size: 20px;
+  }
+
+  .lkg-dialog__guess-word {
+    span {
+      width: 20px;
+      font-size: 24px;
+    }
+  }
+
+  .lkg-dialog__guess-word {
+    &.lkg-dialog__guess-word--submitted {
+      & span:last-child:after {
+        width: 28px;
+        height: 28px;
+        background-size: 16px 16px;
+      }
+    }
+  }
 }

@@ -3,6 +3,7 @@ import { playersData, playerTracksData } from "./data.js";
 import { cloneDeep } from 'lodash-es'
 import PlayerBoard from "./components/playerboard/PlayerBoard.jsx";
 import Figure from "./components/game/Figure.jsx";
+import QuestionModal from "./components/question/QuestionModal.jsx";
 import GameOver from "./components/game/GameOver.jsx";
 import "./App.css";
 
@@ -12,10 +13,18 @@ function App() {
   const [diceOn, setDiceOn] = useState(false)
   const [gameOver, setGameOver] = useState(false)
   const [players, setPlayers] = useState(cloneDeep(playersData));
+  const [playerNames, setPlayerNames] = useState([
+    { name: "Player 1" },
+    { name: "Player 2" },
+    { name: "Player 3" },
+    { name: "Player 4" },
+  ]);
 
   const numberOfCasts = useRef(3);
   const totalCasts = useRef(3);
   const playerTracks = useRef(cloneDeep(playerTracksData));
+  const activeFigure = useRef()
+  const dialogRef = useRef();
 
   function rollDice() {
     let player = players[turn];
@@ -90,6 +99,22 @@ function App() {
   }
 
   function handleMove(figure) {
+    if (figure.eligible) {
+      activeFigure.current = figure;
+      if (figure.position == -1) {
+        moveFigure(figure)
+      }
+      else {
+        openQuestion()
+      }
+    }
+  }
+
+  function openQuestion() {
+    dialogRef.current.show();
+  }
+
+  function moveFigure(figure) {
     if (figure.eligible) {
       let playerTrack = playerTracks.current[turn];
       let newPosition = figure.position == -1  ? 0 : figure.position + diceNumber;
@@ -193,20 +218,71 @@ function App() {
     setGameOver(false);
   }
 
+  function checkWord(playerWord, wordToGuess) {
+    let wordLength = wordToGuess.word.length;
+
+    if (playerWord.slice(0, wordLength).toLowerCase() == wordToGuess.word.toLowerCase()) {
+      setTimeout(() => {
+        dialogRef.current.close();
+        setTimeout(() => {
+          moveFigure(activeFigure.current)
+        }, 300)
+      }, 1000)
+      return true;
+    }
+    else {
+      setTimeout(() => {
+        dialogRef.current.close();
+        setTimeout(() => {
+          setPlayers((oldPlayersData) => {
+            const newPlayersData = [...oldPlayersData.map((player) => {
+              return [...player];
+            })];
+    
+            newPlayersData[turn].forEach((figure) => {
+              figure.eligible = false;
+            });
+    
+            return newPlayersData;
+          });
+          setDiceOn(false);
+          
+          if (diceNumber == 6) {
+            totalCasts.current = numberOfCasts.current = 1;
+          }
+          else {
+            setDiceNumber(1);
+            setTurn((oldTurn) => {
+              let newTurn = oldTurn < 3 ? oldTurn + 1 : 0;
+              setTurn(newTurn);
+    
+              totalCasts.current = numberOfCasts.current = players[newTurn].every(figure => {
+                return figure.position == -1
+              }) ? 3 : 1;
+            });
+          }
+        }, 300)
+      }, 1000)
+      return false;
+    }
+  }
+
   return (
     <>
       <div className="lkg-header">
-        Ludo knowledge game <span> - coming soon...</span>
+        Ludo knowledge game
       </div>
       <div className="lkg-playerboard">
         {players.map((player, index) => {
           return (
-            <PlayerBoard 
-              key={`playerboard-${index}`} 
-              team={index} 
-              turn={turn} 
-              diceNumber={diceNumber} 
-              rollDice={rollDice} 
+            <PlayerBoard
+              key={`playerboard-${index}`}
+              team={index}
+              turn={turn}
+              playerNames={playerNames}
+              setPlayerNames={setPlayerNames}
+              diceNumber={diceNumber}
+              rollDice={rollDice}
               diceOn={diceOn}
               totalCasts={totalCasts}
               numberOfCasts={numberOfCasts}
@@ -214,10 +290,19 @@ function App() {
           )
         })}
       </div>
-      {
-        gameOver && <GameOver turn={turn} resetGame={resetGame}/>
-      }
+      {gameOver && (
+        <GameOver turn={turn} playerNames={playerNames} resetGame={resetGame} />
+      )}
       <div className="lkg-board">
+        <QuestionModal
+          dialogRef={dialogRef}
+          turn={turn}
+          playerNames={playerNames}
+          diceNumber={diceNumber}
+          totalCasts={totalCasts}
+          numberOfCasts={numberOfCasts}
+          checkWord={checkWord}
+        />
         {players.map((player, index) => {
           return (
             <div className="lkg-team" key={`team-${index}`}>

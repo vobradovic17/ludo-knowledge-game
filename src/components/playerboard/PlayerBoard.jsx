@@ -1,7 +1,7 @@
 import PlayerInfo from "./PlayerInfo";
 import DiceBoard from "../dice/DiceBoard";
 
-export default function PlayerBoard({ team, turn, diceNumber, rollDice, diceOn, totalCasts, numberOfCasts }) {
+export default function PlayerBoard({ team, turn, playerNames, setPlayerNames, diceNumber, rollDice, diceOn, totalCasts, numberOfCasts }) {
 
     let onTurn = team == turn;
 
@@ -12,17 +12,21 @@ export default function PlayerBoard({ team, turn, diceNumber, rollDice, diceOn, 
     }
 
     return (
-        <div className={className}>
-            <PlayerInfo team={team} />
-            {onTurn && (
-                <DiceBoard
-                    diceNumber={diceNumber}
-                    rollDice={rollDice}
-                    diceOn={diceOn}
-                    totalCasts={totalCasts}
-                    numberOfCasts={numberOfCasts}
-                />
-            )}
-        </div>
+      <div className={className}>
+        <PlayerInfo
+          team={team}
+          playerNames={playerNames}
+          setPlayerNames={setPlayerNames}
+        />
+        {onTurn && (
+          <DiceBoard
+            diceNumber={diceNumber}
+            rollDice={rollDice}
+            diceOn={diceOn}
+            totalCasts={totalCasts}
+            numberOfCasts={numberOfCasts}
+          />
+        )}
+      </div>
     );
 }

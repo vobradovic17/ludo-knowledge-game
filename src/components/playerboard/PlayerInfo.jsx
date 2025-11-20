@@ -1,10 +1,12 @@
-import { useState } from "react"
-
-export default function PlayerInfo({ team }) {
-    const [playerName, setPlayerName] = useState(`Player ${team + 1}`);
+export default function PlayerInfo({ team, playerNames, setPlayerNames }) {
+    let playerName = playerNames[team].name;
 
     function handleInput(event) {
-        setPlayerName(event.target.value);
+        setPlayerNames((oldValue) => {
+            let newValue = [...oldValue];
+            newValue[team].name = event.target.value
+            return newValue;
+        })
     }
 
     return (
