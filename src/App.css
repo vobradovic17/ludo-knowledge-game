@@ -261,6 +261,19 @@
   width: 100%;
 }
 
+.lkg-dialog__info {
+  position: absolute;
+  margin-top: 4px;
+
+  > span {
+    margin-right: 8px;
+
+    span {
+      font-weight: 500;
+    }
+  }
+}
+
 .lkg-dialog__description {
   margin-top: 8%;
   margin-bottom: 4%;

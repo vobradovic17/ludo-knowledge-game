@@ -13,6 +13,10 @@ export default function Question({ wordToGuess, wordIndex, wordToGuessArray, pla
 
     return (
       <div className="lkg-dialog__word">
+        <div className="lkg-dialog__info">
+          <span>Type: <span>{wordToGuess.type}</span>;</span>
+          <span>Letters: <span>{wordToGuessArray.length}</span>;</span>
+        </div>
         <div className="lkg-dialog__description">
           {wordToGuess.description[0]}
         </div>
