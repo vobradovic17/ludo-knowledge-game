@@ -1,4 +1,9 @@
+import { useState, useEffect } from "react";
+import { shuffle } from "lodash-es";
+
 export default function Question({ wordToGuess, wordIndex, wordToGuessArray, playerWordInputArray, isSubmitted, isCorrect }) {
+    const [description, setDescription] = useState('')
+  
     let className = 'lkg-dialog__guess-word';
 
     if (isSubmitted) {
@@ -11,6 +16,10 @@ export default function Question({ wordToGuess, wordIndex, wordToGuessArray, pla
         }
     }
 
+    useEffect(() => {
+      setDescription(shuffle(wordToGuess.description)[0])
+    }, [wordToGuess])
+
     return (
       <div className="lkg-dialog__word">
         <div className="lkg-dialog__info">
@@ -18,7 +27,7 @@ export default function Question({ wordToGuess, wordIndex, wordToGuessArray, pla
           <span>Letters: <span>{wordToGuessArray.length}</span>;</span>
         </div>
         <div className="lkg-dialog__description">
-          {wordToGuess.description[0]}
+          {description}
         </div>
         <div className={className}>
           {wordToGuessArray.map((letter, index) => {
