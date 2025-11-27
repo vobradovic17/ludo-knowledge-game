@@ -122,84 +122,117 @@ function App() {
       let isOccupied = playerTrack[newPosition]?.occupied;
       let isOpponent = playerTrack[newPosition]?.occupiedBy.player != turn
 
-      figure.position = newPosition
+      for (let i = 0; i < diceNumber; i++) {
+        if (i == diceNumber - 1 || figure.position == -1) {
+          setTimeout(() => {
+            figure.position = newPosition
 
-      let remove = false;
-      let playerToRemove = null;
-      let figureToRemove = null;
+            let remove = false;
+            let playerToRemove = null;
+            let figureToRemove = null;
 
-      if (isOccupied && isOpponent) {
-        remove = true;
-        playerToRemove = playerTrack[newPosition].occupiedBy.player;
-        figureToRemove = playerTrack[newPosition].occupiedBy.figure;
-      }
+            if (isOccupied && isOpponent) {
+              remove = true;
+              playerToRemove = playerTrack[newPosition].occupiedBy.player;
+              figureToRemove = playerTrack[newPosition].occupiedBy.figure;
+            }
 
-      playerTrack[newPosition].occupied = true;
-      playerTrack[newPosition].occupiedBy.player = figure.player;
-      playerTrack[newPosition].occupiedBy.figure = figure.figure;
+            playerTrack[newPosition].occupied = true;
+            playerTrack[newPosition].occupiedBy.player = figure.player;
+            playerTrack[newPosition].occupiedBy.figure = figure.figure;
 
-      if (oldPosition > -1) {
-        playerTrack[oldPosition].occupied = false;
-        playerTrack[oldPosition].occupiedBy.player = null;
-        playerTrack[oldPosition].occupiedBy.figure = null;
-      }
+            if (oldPosition > -1) {
+              playerTrack[oldPosition].occupied = false;
+              playerTrack[oldPosition].occupiedBy.player = null;
+              playerTrack[oldPosition].occupiedBy.figure = null;
+            }
 
-      setPlayers((oldPlayersData) => {
-        const newPlayersData = [...oldPlayersData.map((player) => {
-          return [...player];
-        })];
+            setPlayers((oldPlayersData) => {
+              const newPlayersData = [...oldPlayersData.map((player) => {
+                return [...player];
+              })];
 
-        let newX = playerTrack[newPosition].x;
-        let newY = playerTrack[newPosition].y;
+              let newX = playerTrack[newPosition].x;
+              let newY = playerTrack[newPosition].y;
 
-        figure.x = newX;
-        figure.y = newY;
+              figure.x = newX;
+              figure.y = newY;
 
-        let figureIndex = figure.figure;
-        newPlayersData[turn][figureIndex] = figure;
+              let figureIndex = figure.figure;
+              newPlayersData[turn][figureIndex] = figure;
 
-        if (remove) {
-          newPlayersData[playerToRemove][figureToRemove].position = -1;
-          newPlayersData[playerToRemove][figureToRemove].x = newPlayersData[playerToRemove][figureToRemove].startingX;
-          newPlayersData[playerToRemove][figureToRemove].y = newPlayersData[playerToRemove][figureToRemove].startingY;
+              if (remove) {
+                newPlayersData[playerToRemove][figureToRemove].position = -1;
+                newPlayersData[playerToRemove][figureToRemove].x = newPlayersData[playerToRemove][figureToRemove].startingX;
+                newPlayersData[playerToRemove][figureToRemove].y = newPlayersData[playerToRemove][figureToRemove].startingY;
+              }
+
+              newPlayersData[turn].forEach((figure) => {
+                figure.eligible = false;
+              });
+
+              return newPlayersData;
+            });
+
+            let playerWins = playerTrack.slice(-4).every(position => {
+              return position.occupied
+            })
+
+            if (playerWins) {
+              setGameOver(true);
+              return;
+            }
+
+            setTimeout(() => {
+              setDiceOn(false);
+            }, 1000)
+
+            if (diceNumber == 6) {
+              totalCasts.current = numberOfCasts.current = 1;
+              return;
+            }
+
+            setTimeout(() => {
+              setTurn((oldTurn) => {
+                let newTurn = oldTurn < 3 ? oldTurn + 1 : 0;
+                setTurn(newTurn);
+
+                totalCasts.current = numberOfCasts.current = players[newTurn].every(figure => {
+                  return figure.position == -1
+                }) ? 3 : 1;
+
+              });
+            }, 1000)
+          }, 800 * i)
+          break;
         }
+        else {
+          setTimeout(() => {
+            figure.position = oldPosition + (i + 1);
 
-        newPlayersData[turn].forEach((figure) => {
-          figure.eligible = false;
-        });
+            setPlayers((oldPlayersData) => {
+              const newPlayersData = [...oldPlayersData.map((player) => {
+                return [...player];
+              })];
 
-        return newPlayersData;
-      });
+              let newX = playerTrack[figure.position].x;
+              let newY = playerTrack[figure.position].y;
 
-      let playerWins = playerTrack.slice(-4).every(position => {
-        return position.occupied
-      })
+              figure.x = newX;
+              figure.y = newY;
 
-      if (playerWins) {
-        setGameOver(true);
-        return;
+              let figureIndex = figure.figure;
+              newPlayersData[turn][figureIndex] = figure;
+
+              newPlayersData[turn].forEach((figure) => {
+                figure.eligible = false;
+              });
+
+              return newPlayersData;
+            });
+          }, 800 * i)
+        }
       }
-
-      setTimeout(() => {
-        setDiceOn(false);
-      }, 1000)
-
-      if (diceNumber == 6) {
-        totalCasts.current = numberOfCasts.current = 1;
-        return;
-      }
-
-      setTimeout(() => {
-        setTurn((oldTurn) => {
-          let newTurn = oldTurn < 3 ? oldTurn + 1 : 0;
-          setTurn(newTurn);
-
-          totalCasts.current = numberOfCasts.current = players[newTurn].every(figure => {
-            return figure.position == -1
-          }) ? 3 : 1;
-
-        });
-      }, 1000)
     }
   }
 
@@ -311,6 +344,7 @@ function App() {
                   <Figure
                     key={`figure-${index}-${i}`}
                     figure={figure}
+                    turn={turn}
                     handleMove={handleMove}
                   />
                 );

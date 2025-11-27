@@ -1,10 +1,14 @@
 import FigureIcon from "./FigureIcon"
 
-export default function Figure({ figure, handleMove }) {
+export default function Figure({ figure, turn, handleMove }) {
     let className = 'lkg-figure';
 
     if (figure.eligible) {
         className += ' lkg-figure--eligible'
+    }
+
+    if (figure.player == turn) {
+        className += ' lkg-figure--onturn'
     }
     
     let style = {
