@@ -10,13 +10,10 @@ export default function QuestionTimer({ isSubmitted, showHint, setShowHint, hand
     }, [remainingTime, showHint, setShowHint])
 
     useEffect(() => {
-        const timer = setTimeout(handleCheck, 20000);
-
-        return () => {
-            clearTimeout(timer);
-            setShowHint(false)
-        };
-    }, [handleCheck, setShowHint]);
+        if (remainingTime < 0) {
+            handleCheck()
+        }
+    }, [remainingTime, handleCheck]);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -30,8 +27,9 @@ export default function QuestionTimer({ isSubmitted, showHint, setShowHint, hand
 
         return () => {
             clearInterval(interval);
+            setShowHint(false)
         };
-    }, [isSubmitted])
+    }, [isSubmitted, setShowHint])
 
     return (
         <progress
