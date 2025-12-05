@@ -976,4 +976,277 @@ export const words = [
             "To make (a quantity) smaller"
         ]
     },
+    {
+        word: "demonstrate",
+        type: "verb",
+        description: [
+            "To show how to use (something)",
+        ]
+    },
+    {
+        word: "distribute",
+        type: "verb",
+        description: [
+            "To divide into portions and dispense",
+        ]
+    },
+    {
+        word: "effective",
+        type: "adjective",
+        description: [
+            "Efficient, serviceable, or operative, available for useful work.",
+        ]
+    },
+    {
+        word: "eliminate",
+        type: "verb",
+        description: [
+            "To completely remove, get rid of, put an end to.",
+        ]
+    },
+    {
+        word: "evidence",
+        type: "noun",
+        description: [
+            "Facts or observations presented in support of an assertion",
+            "Anything admitted by a court to prove or disprove alleged matters of fact in a trial"
+        ]
+    },
+    {
+        word: "fortunate",
+        type: "adjective",
+        description: [
+            "Happening by good luck or favorable chance"
+        ]
+    },
+    {
+        word: "frequent",
+        type: "adjective",
+        description: [
+            "Occurring at short intervals; occurring often."
+        ]
+    },
+    {
+        word: "increase",
+        type: "verb",
+        description: [
+            "To become larger or greater (of a quantity, etc.)"
+        ]
+    },
+    {
+        word: "inform",
+        type: "verb",
+        description: [
+            "To communicate knowledge to"
+        ]
+    },
+    {
+        word: "insert",
+        type: "verb",
+        description: [
+            "To put in between or into"
+        ]
+    },
+    {
+        word: "maximum",
+        type: "noun",
+        description: [
+            "The highest limit",
+            "The greatest value of a set or other mathematical structure",
+            "An upper bound of a set which is also an element of that set"
+        ]
+    },
+    {
+        word: "minimum",
+        type: "noun",
+        description: [
+            "The lowest limit",
+            "The smallest amount",
+            "A lower bound of a set which is also an element of that set"
+        ]
+    },
+    {
+        word: "obvious",
+        type: "adjective",
+        description: [
+            "Easily discovered, seen, or understood; self-explanatory."
+        ]
+    },
+    {
+        word: "prediction",
+        type: "noun",
+        description: [
+            "A statement of what will happen in the future",
+            "A probability estimation based on statistical methods"
+        ]
+    },
+    {
+        word: "previous",
+        type: "adjective",
+        description: [
+            "Prior; occurring before something else, either in time or order."
+        ]
+    },
+    {
+        word: "rarely",
+        type: "adverb",
+        description: [
+            "Not occurring at a regular interval; seldom; not often."
+        ]
+    },
+    {
+        word: "recommend",
+        type: "verb",
+        description: [
+            "To represent favourably; to suggest, endorse or encourage as an appropriate choice.",
+            "To advise, propose, counsel favorably."
+        ]
+    },
+    {
+        word: "result",
+        type: "noun",
+        description: [
+            "The conclusion or end to which is obtained by any process or operation"
+        ]
+    },
+    {
+        word: "scarce",
+        type: "adjective",
+        description: [
+            "Uncommon, rare; difficult to find; insufficient to meet a demand."
+        ]
+    },
+    {
+        word: "select",
+        type: "verb",
+        description: [
+            "To choose one or more elements of a set"
+        ]
+    },
+    {
+        word: "summarize",
+        type: "verb",
+        description: [
+            "To give a recapitulation of the salient facts; to recapitulate or review."
+        ]
+    },
+    {
+        word: "surround",
+        type: "verb",
+        description: [
+            "To encircle something",
+            "To enclose or confine something on all sides so as to prevent escape"
+        ]
+    },
+    {
+        word: "support",
+        type: "verb",
+        description: [
+            "To help keep from falling",
+            "To back or favor a cause"
+        ]
+    },
+    {
+        word: "temporary",
+        type: "adjective",
+        description: [
+            "Not permanent; existing only for a period or periods of time.",
+            "Existing only for a short time or short times"
+        ]
+    },
+    {
+        word: "tradition",
+        type: "noun",
+        description: [
+            "A part of culture that is passed from person to person or generation to generation"
+        ]
+    },
+    {
+        word: "typical",
+        type: "adjective",
+        description: [
+            "Capturing the overall sense of a thing",
+            "Characteristically representing something by form, group, idea or type."
+        ]
+    },
+    {
+        word: "usually",
+        type: "adverb",
+        description: [
+            "Most of the time; less than always, but more than occasionally.",
+            "Under normal conditions"
+        ]
+    },
+    {
+        word: "abolish",
+        type: "verb",
+        description: [
+            "To end a law, system, institution, custom or practice."
+        ]
+    },
+    {
+        word: "announce",
+        type: "verb",
+        description: [
+            "To give public notice of, especially for the first time; to make known."
+        ]
+    },
+    {
+        word: "approval",
+        type: "noun",
+        description: [
+            "An expression granting permission; an indication of agreement with a proposal.",
+            "An expression of favorable acceptance and encouragement"
+        ]
+    },
+    {
+        word: "approximate",
+        type: "adjective",
+        description: [
+            "Nearing correctness; nearly exact; not perfectly accurate."
+        ]
+    },
+    {
+        word: "argument",
+        type: "noun",
+        description: [
+            "A fact or statement used to support a proposition",
+            "A verbal dispute; a quarrel."
+        ]
+    },
+    {
+        word: "claim",
+        type: "noun",
+        description: [
+            "A demand of ownership made for something"
+        ]
+    },
+    {
+        word: "conclude",
+        type: "verb",
+        description: [
+            "To end; to bring to an end; to close; to finish."
+        ]
+    },
+    {
+        word: "conflict",
+        type: "noun",
+        description: [
+            "A clash or disagreement, often violent, between two or more opposing groups or individuals."
+        ]
+    },
+    {
+        word: "consistent",
+        type: "adjective",
+        description: [
+            "Of a regularly occurring, dependable nature."
+        ]
+    },
+    {
+        word: "context",
+        type: "noun",
+        description: [
+            "The surroundings, circumstances, environment, background or settings that determine, specify, or clarify the meaning of an event or other occurrence."
+        ]
+    }
 ]
