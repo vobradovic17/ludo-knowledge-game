@@ -246,6 +246,7 @@
 }
 
 .lkg-dialog__body {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -352,6 +353,33 @@
   }
 }
 
+.lkg-hint {
+  text-transform: none;
+  border-bottom: none;
+  width: 100%;
+  height: 100%;
+  animation-name: fade-in;
+  animation-duration: 2.5s;
+  animation-direction: normal;
+  animation-iteration-count: 4;
+  animation-timing-function: linear;
+  color: #eaeaea;
+  text-shadow: 1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
+  opacity: 0;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0
+  }
+  50% {
+    opacity: 1
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .lkg-dialog__input {
   margin-bottom: 15px;
 
@@ -359,6 +387,22 @@
     padding: 8px 12px;
     border-radius: 12px;
     font-size: 16px;
+  }
+}
+
+.lkg-question-timer {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  border-radius: 0;
+  bottom: 0;
+
+  &::-webkit-progress-bar {
+    background-color: transparent;
+  }
+
+  &::-webkit-progress-value {
+    background-color: #000;
   }
 }
 
@@ -409,7 +453,7 @@
   justify-content: center;
   flex-direction: column;
   background-color: rgba(0, 0, 0, .5);
-  z-index: 1;
+  z-index: 2;
 }
 
 .lkg-game-over__message {

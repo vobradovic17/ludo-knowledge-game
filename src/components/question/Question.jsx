@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { shuffle } from "lodash-es";
 
-export default function Question({ wordToGuess, wordIndex, wordToGuessArray, playerWordInputArray, isSubmitted, isCorrect }) {
+export default function Question({ wordToGuess, wordIndex, wordToGuessArray, playerWordInputArray, isSubmitted, isCorrect, showHint }) {
     const [description, setDescription] = useState('')
+    const [hintLetters, setHintLetters] = useState([])
   
     let className = 'lkg-dialog__guess-word';
 
@@ -15,6 +16,36 @@ export default function Question({ wordToGuess, wordIndex, wordToGuessArray, pla
             className += ' lkg-dialog__guess-word--wrong'
         }
     }
+
+    const getRandomHintIndex = useCallback(function getRandomHintIndex() {
+      return Math.floor(Math.random() * (wordToGuess.word.length - 1) + 1) 
+    }, [wordToGuess])
+
+    useEffect(() => {
+      let numberOfHints = Math.floor(wordToGuess.word.length * 0.3) + 1;
+      let hints = [];
+      
+      for (let i = 0; i < numberOfHints; i++) {
+        let randomHintIndex;
+        if (i == 0) {
+          randomHintIndex = getRandomHintIndex()
+        }
+        else {
+          do {
+            randomHintIndex = getRandomHintIndex()
+          }
+          while (hints.includes(randomHintIndex))
+        }
+        hints.push(randomHintIndex)
+      }
+
+      setHintLetters(() => {
+        let newHintArray = Array.from(wordToGuess.word).map((item, index) => {
+          return hints.includes(index)
+        })
+        return newHintArray;
+      })
+    }, [wordToGuess, getRandomHintIndex])
 
     useEffect(() => {
       setDescription(shuffle(wordToGuess.description)[0])
@@ -36,7 +67,16 @@ export default function Question({ wordToGuess, wordIndex, wordToGuessArray, pla
             } else {
               return (
                 <span key={`word-${wordIndex}-${index}`}>
-                    {playerWordInputArray[index]?.toLowerCase()}
+                  {!(
+                    showHint &&
+                    !playerWordInputArray[index] &&
+                    hintLetters[index] &&
+                    !isSubmitted
+                  ) ? (
+                    playerWordInputArray[index]?.toLowerCase()
+                  ) : (
+                    <div className="lkg-hint">{letter}</div>
+                  )}
                 </span>
               );
             }

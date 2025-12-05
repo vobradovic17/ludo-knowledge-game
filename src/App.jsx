@@ -11,6 +11,7 @@ function App() {
   const [diceNumber, setDiceNumber] = useState(1);
   const [turn, setTurn] = useState(0);
   const [diceOn, setDiceOn] = useState(false)
+  const [timerOn, setTimerOn] = useState(false)
   const [gameOver, setGameOver] = useState(false)
   const [players, setPlayers] = useState(cloneDeep(playersData));
   const [playerNames, setPlayerNames] = useState([
@@ -101,7 +102,7 @@ function App() {
   function handleMove(figure) {
     if (figure.eligible) {
       activeFigure.current = figure;
-      if (figure.position == -1) {
+      if (figure.position == -1 || figure.position >= 40 ) {
         moveFigure(figure)
       }
       else {
@@ -112,6 +113,7 @@ function App() {
 
   function openQuestion() {
     dialogRef.current.show();
+    setTimerOn(true);
   }
 
   function moveFigure(figure) {
@@ -257,6 +259,7 @@ function App() {
     if (playerWord.slice(0, wordLength).toLowerCase() == wordToGuess.word.toLowerCase()) {
       setTimeout(() => {
         dialogRef.current.close();
+        setTimerOn(false);
         setTimeout(() => {
           moveFigure(activeFigure.current)
         }, 300)
@@ -266,6 +269,7 @@ function App() {
     else {
       setTimeout(() => {
         dialogRef.current.close();
+        setTimerOn(false);
         setTimeout(() => {
           setPlayers((oldPlayersData) => {
             const newPlayersData = [...oldPlayersData.map((player) => {
@@ -334,6 +338,7 @@ function App() {
           diceNumber={diceNumber}
           totalCasts={totalCasts}
           numberOfCasts={numberOfCasts}
+          timerOn={timerOn}
           checkWord={checkWord}
         />
         {players.map((player, index) => {

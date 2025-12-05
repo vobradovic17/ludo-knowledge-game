@@ -1,0 +1,43 @@
+import { useState, useEffect} from 'react'
+
+export default function QuestionTimer({ isSubmitted, showHint, setShowHint, handleCheck }) {
+    const [remainingTime, setRemainingTime] = useState(19900);
+
+    useEffect(() => {
+        if (remainingTime < 10000 && !showHint) {
+            setShowHint(true)
+        }
+    }, [remainingTime, showHint, setShowHint])
+
+    useEffect(() => {
+        const timer = setTimeout(handleCheck, 20000);
+
+        return () => {
+            clearTimeout(timer);
+            setShowHint(false)
+        };
+    }, [handleCheck, setShowHint]);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (!isSubmitted) {
+                setRemainingTime((prevRemainingTime) => {
+                    let newRemainingTime = prevRemainingTime - 100;
+                    return newRemainingTime
+                });
+            }
+        }, 100);
+
+        return () => {
+            clearInterval(interval);
+        };
+    }, [isSubmitted])
+
+    return (
+        <progress
+            className="lkg-question-timer"
+            max="20000"
+            value={remainingTime}
+        />
+    )
+}

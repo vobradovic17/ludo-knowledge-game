@@ -1,4 +1,4 @@
-export default function Footer({ isSubmitted, isCorrect, handleCheck }) {
+export default function Footer({ isSubmitted, isCorrect, footerButton, handleCheck }) {
     let buttonClass = "lkg-dialog__button";
 
     if (isSubmitted) {
@@ -7,7 +7,7 @@ export default function Footer({ isSubmitted, isCorrect, handleCheck }) {
 
     return (
       <div className="lkg-dialog__footer">
-        <button className={buttonClass} onClick={handleCheck} disabled={isSubmitted}>
+        <button ref={footerButton} className={buttonClass} onClick={handleCheck} disabled={isSubmitted}>
           {!isSubmitted ? "Check" : isCorrect ? "Correct" : "Wrong"}
         </button>
       </div>

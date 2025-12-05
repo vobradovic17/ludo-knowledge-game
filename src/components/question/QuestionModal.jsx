@@ -1,27 +1,37 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useCallback } from 'react'
 import { words } from '../../words.js'
 import { shuffle } from 'lodash-es'
 import Header from './Header.jsx'
 import Question from './Question.jsx'
 import Input from './Input.jsx'
+import QuestionTimer from './QuestionTimer.jsx'
 import Footer from './Footer.jsx'
 
 
-export default function QuestionModal({ dialogRef, turn, playerNames, diceNumber, totalCasts, numberOfCasts, checkWord }) {
+export default function QuestionModal({ dialogRef, turn, playerNames, diceNumber, totalCasts, numberOfCasts, timerOn, checkWord }) {
     const [playerWordInput, setPlayerWordInput] = useState('')
     const [isSubmitted, setIsSubmitted] = useState(false)
     const [isCorrect, setIsCorrect] = useState(false)
+    const [showHint, setShowHint] = useState(false);
 
     const wordsToGuess = useRef(shuffle(words))
     const wordIndex = useRef(0);
+
+    const footerButton = useRef();
 
     let wordToGuess = wordsToGuess.current[wordIndex.current];
 
     let wordToGuessArray = Array.from(wordToGuess.word);
     let playerWordInputArray = Array.from(playerWordInput)
 
+    const submitAnswer = useCallback(function submitAnswer() {
+      footerButton.current.click()
+    }, [])
+
     function handlePlayerWordInput(event) {
+      if (!isSubmitted) {
         setPlayerWordInput(event.target.value)
+      }
     }
 
     function handleCheck() {
@@ -58,17 +68,27 @@ export default function QuestionModal({ dialogRef, turn, playerNames, diceNumber
               playerWordInputArray={playerWordInputArray}
               isSubmitted={isSubmitted}
               isCorrect={isCorrect}
+              showHint={showHint}
             />
             <Input
               playerWordInput={playerWordInput}
               handlePlayerWordInput={handlePlayerWordInput}
               handleCheck={handleCheck}
             />
+            {timerOn && (
+              <QuestionTimer
+                isSubmitted={isSubmitted}
+                showHint={showHint}
+                setShowHint={setShowHint}
+                handleCheck={submitAnswer}
+              />
+            )}
           </div>
           <Footer
             isSubmitted={isSubmitted}
             isCorrect={isCorrect}
             handleCheck={handleCheck}
+            footerButton={footerButton}
           />
         </div>
       </dialog>
