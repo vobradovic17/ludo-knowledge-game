@@ -361,7 +361,7 @@
   animation-name: fade-in;
   animation-duration: 2.5s;
   animation-direction: normal;
-  animation-iteration-count: 4;
+  animation-iteration-count: 6;
   animation-timing-function: linear;
   color: #eaeaea;
   text-shadow: 1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
