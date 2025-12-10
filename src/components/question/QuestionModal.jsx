@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, useEffect } from 'react'
 import { words } from '../../words.js'
 import { shuffle } from 'lodash-es'
 import Header from './Header.jsx'
@@ -13,13 +13,40 @@ export default function QuestionModal({ dialogRef, turn, playerNames, diceNumber
     const [isSubmitted, setIsSubmitted] = useState(false)
     const [isCorrect, setIsCorrect] = useState(false)
     const [showHint, setShowHint] = useState(false);
+    const [wordToGuess, setWordToGuess] = useState(words[0])
 
     const wordsToGuess = useRef(shuffle(words))
     const wordIndex = useRef(0);
 
     const footerButton = useRef();
 
-    let wordToGuess = wordsToGuess.current[wordIndex.current];
+    const getWordToGuess = useCallback(function getWordToGuess() {
+      let wordLengthData = {
+        '1': [3,4,5],
+        '2': [5,6],
+        '3': [6,7],
+        '4': [7,8],
+        '5': [8,9],
+        '6': [9,10,11]
+      }
+
+      let wordLength = wordLengthData[diceNumber];
+        
+      let wordsToGuessIndex = wordsToGuess.current.findIndex(item => {
+        return wordLength.includes(item.word.length)
+      })
+     
+      let word = wordsToGuess.current[wordsToGuessIndex];
+
+      wordsToGuess.current.splice(wordsToGuessIndex, 1);
+      wordsToGuess.current.push(word);
+
+      return word;
+    }, [diceNumber])
+
+    useEffect(() => {
+      setWordToGuess(getWordToGuess())
+    }, [getWordToGuess])
 
     let wordToGuessArray = Array.from(wordToGuess.word);
     let playerWordInputArray = Array.from(playerWordInput)
@@ -35,19 +62,15 @@ export default function QuestionModal({ dialogRef, turn, playerNames, diceNumber
     }
 
     function handleCheck() {
-        setIsSubmitted(true);
-        setIsCorrect(checkWord(playerWordInput, wordToGuess));
-        setTimeout(() => {
-            setIsSubmitted(false);
-            setIsCorrect(false);
-            if (wordsToGuess.current.length - 1 > wordIndex.current) {
-              wordIndex.current++;
-            }
-            else {
-              wordIndex.current = 0
-            }
-            setPlayerWordInput('');
-        }, 1000)
+      setIsSubmitted(true);
+      setIsCorrect(checkWord(playerWordInput, wordToGuess));
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setIsCorrect(false);
+        wordIndex.current++;
+        setWordToGuess(getWordToGuess())
+        setPlayerWordInput('');
+      }, 1000)
     }
 
     return (
