@@ -24,7 +24,7 @@ export default function Question({ wordToGuess, wordIndex, wordToGuessArray, pla
     useEffect(() => {
       let numberOfHints = Math.floor(wordToGuess.word.length * 0.3) + 1;
       let hints = [];
-      
+
       for (let i = 0; i < numberOfHints; i++) {
         let randomHintIndex;
         if (i == 0) {
@@ -73,7 +73,9 @@ export default function Question({ wordToGuess, wordIndex, wordToGuessArray, pla
                     hintLetters[index] &&
                     !isSubmitted
                   ) ? (
-                    playerWordInputArray[index]?.toLowerCase()
+                    <div className={index > 0 && playerWordInputArray[index] ? "lkg-letter" : ""}>
+                      {playerWordInputArray[index]?.toLowerCase()}
+                    </div>
                   ) : (
                     <div className="lkg-hint">{letter}</div>
                   )}

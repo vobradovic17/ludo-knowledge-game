@@ -380,6 +380,23 @@
   }
 }
 
+.lkg-letter {
+  animation-name: letter-in;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out;
+}
+
+@keyframes letter-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .lkg-dialog__input {
   margin-bottom: 15px;
 
