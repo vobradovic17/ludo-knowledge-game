@@ -63,7 +63,7 @@ export const words = [
         word: "exhausted",
         type: "adjective",
         description: [
-            "Very tired; Depleted of resources."
+            "Very tired; depleted of resources."
         ]
     },
     {
@@ -716,7 +716,7 @@ export const words = [
         word: "dangle",
         type: "verb",
         description: [
-            "To hang loosely with the ability to swing."
+            "To hang loosely with the ability to swing"
         ]
     },
     {
@@ -1091,7 +1091,7 @@ export const words = [
         word: "rarely",
         type: "adverb",
         description: [
-            "Not occurring at a regular interval; seldom; not often."
+            "Not occurring often"
         ]
     },
     {
@@ -1177,6 +1177,7 @@ export const words = [
             "Under normal conditions"
         ]
     },
+    // fifth grade
     {
         word: "abolish",
         type: "verb",
@@ -1248,5 +1249,233 @@ export const words = [
         description: [
             "The surroundings, circumstances, environment, background or settings that determine, specify, or clarify the meaning of an event or other occurrence."
         ]
-    }
+    },
+    {
+        word: "decade",
+        type: "noun",
+        description: [
+            "A period of ten years"
+        ]
+    },
+    {
+        word: "dominate",
+        type: "verb",
+        description: [
+            "To govern, rule or control by superior authority or power."
+        ]
+    },
+    {
+        word: "edible",
+        type: "adjective",
+        description: [
+            "Capable of being eaten without harm",
+            "Suitable for consumption"
+        ]
+    },
+    {
+        word: "equivalent",
+        type: "adjective",
+        description: [
+            "Similar or identical in value, meaning or effect."
+        ]
+    },
+    {
+        word: "escalate",
+        type: "verb",
+        description: [
+            "To increase (something) in extent or intensity; to intensify or step up."
+        ]
+    },
+    {
+        word: "evaluate",
+        type: "verb",
+        description: [
+            "To draw conclusions from examining; to assess; to appraise."
+        ]
+    },
+    {
+        word: "exhaust",
+        type: "verb",
+        description: [
+            "To draw or let out wholly; to drain completely.",
+            "To empty by drawing or letting out the contents.",
+            "To use up; to deplete, drain or expend wholly, or use until the supply comes to an end."
+        ]
+    },
+    {
+        word: "express",
+        type: "adjective",
+        description: [
+            "Moving or operating quickly, as a train not making local stops."
+        ]
+    },
+    {
+        word: "familiar",
+        type: "adjective",
+        description: [
+            "Known to one, or generally known; commonplace."
+        ]
+    },
+    {
+        word: "gigantic",
+        type: "adjective",
+        description: [
+            "Very large"
+        ]
+    },
+    {
+        word: "glare",
+        type: "noun",
+        description: [
+            "An intense, blinding light."
+        ]
+    },
+    {
+        word: "harsh",
+        type: "adjective",
+        description: [
+            "Unpleasantly rough to the touch or other senses"
+        ]
+    },
+    {
+        word: "hesitate",
+        type: "verb",
+        description: [
+            "To stop or pause respecting decision or action; to be in suspense or uncertainty as to a determination."
+        ]
+    },
+    {
+        word: "hilarious",
+        type: "adjective",
+        description: [
+            "Very funny; causing great merriment and laughter."
+        ]
+    },
+    {
+        word: "horizontal",
+        type: "adjective",
+        description: [
+            "Perpendicular to the vertical; parallel to the plane of the horizon; level, flat."
+        ]
+    },
+    {
+        word: "hostile",
+        type: "adjective",
+        description: [
+            "Not friendly; appropriate to an enemy.",
+            "Showing the disposition of an enemy",
+            "Showing ill will and malevolence or a desire to thwart and injure"
+        ]
+    },
+    {
+        word: "illegible",
+        type: "adjective",
+        description: [
+            "Not clear enough to be read; unreadable."
+        ]
+    },
+    {
+        word: "immigrate",
+        type: "verb",
+        description: [
+            "To move into a foreign country to stay permanently"
+        ]
+    },
+    {
+        word: "influence",
+        type: "noun",
+        description: [
+            "The power to affect, control or manipulate something or someone."
+        ]
+    },
+    {
+        word: "navigate",
+        type: "verb",
+        description: [
+            "To plan, control and record the position and course of a vehicle, ship, aircraft, etc., on a journey.",
+            "To give directions, as from a map, to someone driving a vehicle."
+        ]
+    },
+    {
+        word: "ordinary",
+        type: "adjective",
+        description: [
+            "Being part of the natural order of things; normal, customary, routine."
+        ]
+    },
+    {
+        word: "primary",
+        type: "adjective",
+        description: [
+            "First or earliest in a group or series",
+            "Main; principal; chief; placed ahead of others."
+        ]
+    },
+    {
+        word: "review",
+        type: "verb",
+        description: [
+            "To survey; to look broadly over.",
+            "To write a critical evaluation of a new art work etc.",
+            "To look back over in order to correct or edit"
+        ]
+    },
+    {
+        word: "revolt",
+        type: "verb",
+        description: [
+            "To rebel, particularly against authority."
+        ]
+    },
+    {
+        word: "significant",
+        type: "adjective",
+        description: [
+            "Having a noticeable or major effect"
+        ]
+    },
+    {
+        word: "source",
+        type: "noun",
+        description: [
+            "The person, place or thing from which something (information, goods, etc.) comes or is acquired.",
+            "Spring; fountainhead; wellhead; any collection of water on or under the surface of the ground in which a stream originates."
+        ]
+    },
+    {
+        word: "superior",
+        type: "adjective",
+        description: [
+            "Higher in rank, status, or quality.",
+            "Located above or out; higher in position."
+        ]
+    },
+    {
+        word: "tension",
+        type: "noun",
+        description: [
+            "A feeling of nervousness, excitement, or fear that is created in a movie, book, etc."
+        ]
+    },
+    {
+        word: "tolerate",
+        type: "verb",
+        description: [
+            "To allow or permit without explicit approval"
+        ]
+    },
+    {
+        word: "tremble",
+        type: "verb",
+        description: [
+            "To shake, quiver, or vibrate."
+        ]
+    },
+    {
+        word: "vertical",
+        type: "adjective",
+        description: [
+            "Standing, pointing, or moving straight up or down; parallel to the local direction of gravity; perpendicular to something horizontal."
+        ]
+    },
 ]
