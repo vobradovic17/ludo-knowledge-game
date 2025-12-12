@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { playersData, playerTracksData } from "./data.js";
-import { cloneDeep } from 'lodash-es'
+import { words } from './words.js'
+import { cloneDeep, shuffle } from 'lodash-es'
 import PlayerBoard from "./components/playerboard/PlayerBoard.jsx";
 import Figure from "./components/game/Figure.jsx";
 import QuestionModal from "./components/question/QuestionModal.jsx";
@@ -14,6 +15,7 @@ function App() {
   const [timerOn, setTimerOn] = useState(false)
   const [gameOver, setGameOver] = useState(false)
   const [players, setPlayers] = useState(cloneDeep(playersData));
+  const [wordToGuess, setWordToGuess] = useState(words[0])
   const [playerNames, setPlayerNames] = useState([
     { name: "Player 1" },
     { name: "Player 2" },
@@ -26,6 +28,7 @@ function App() {
   const playerTracks = useRef(cloneDeep(playerTracksData));
   const activeFigure = useRef()
   const dialogRef = useRef();
+  const wordsToGuess = useRef(shuffle(words))
 
   function rollDice() {
     let player = players[turn];
@@ -112,6 +115,7 @@ function App() {
   }
 
   function openQuestion() {
+    setWordToGuess(getWordToGuess())
     dialogRef.current.show();
     setTimerOn(true);
   }
@@ -238,6 +242,30 @@ function App() {
     }
   }
 
+  function getWordToGuess() {
+    let wordLengthData = {
+      1: [3, 4, 5],
+      2: [5, 6],
+      3: [6, 7],
+      4: [7, 8],
+      5: [8, 9],
+      6: [9, 10, 11],
+    };
+
+    let wordLength = wordLengthData[diceNumber];
+
+    let wordsToGuessIndex = wordsToGuess.current.findIndex((item) => {
+      return wordLength.includes(item.word.length);
+    });
+
+    let word = wordsToGuess.current[wordsToGuessIndex];
+
+    wordsToGuess.current.splice(wordsToGuessIndex, 1);
+    wordsToGuess.current.push(word);
+
+    return word;
+  }
+
   function resetGame() {
     setPlayers(() => {
       return cloneDeep(playersData)
@@ -339,6 +367,7 @@ function App() {
           totalCasts={totalCasts}
           numberOfCasts={numberOfCasts}
           timerOn={timerOn}
+          wordToGuess={wordToGuess}
           checkWord={checkWord}
         />
         {players.map((player, index) => {

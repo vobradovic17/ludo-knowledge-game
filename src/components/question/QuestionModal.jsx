@@ -1,6 +1,4 @@
-import { useState, useRef, useCallback, useEffect } from 'react'
-import { words } from '../../words.js'
-import { shuffle } from 'lodash-es'
+import { useState, useRef, useCallback } from 'react'
 import Header from './Header.jsx'
 import Question from './Question.jsx'
 import Input from './Input.jsx'
@@ -8,45 +6,15 @@ import QuestionTimer from './QuestionTimer.jsx'
 import Footer from './Footer.jsx'
 
 
-export default function QuestionModal({ dialogRef, turn, playerNames, diceNumber, totalCasts, numberOfCasts, timerOn, checkWord }) {
+export default function QuestionModal({ dialogRef, turn, playerNames, diceNumber, totalCasts, numberOfCasts, timerOn, wordToGuess, checkWord }) {
     const [playerWordInput, setPlayerWordInput] = useState('')
     const [isSubmitted, setIsSubmitted] = useState(false)
     const [isCorrect, setIsCorrect] = useState(false)
     const [showHint, setShowHint] = useState(false);
-    const [wordToGuess, setWordToGuess] = useState(words[0])
 
-    const wordsToGuess = useRef(shuffle(words))
     const wordIndex = useRef(0);
 
     const footerButton = useRef();
-
-    const getWordToGuess = useCallback(function getWordToGuess() {
-      let wordLengthData = {
-        '1': [3,4,5],
-        '2': [5,6],
-        '3': [6,7],
-        '4': [7,8],
-        '5': [8,9],
-        '6': [9,10,11]
-      }
-
-      let wordLength = wordLengthData[diceNumber];
-        
-      let wordsToGuessIndex = wordsToGuess.current.findIndex(item => {
-        return wordLength.includes(item.word.length)
-      })
-     
-      let word = wordsToGuess.current[wordsToGuessIndex];
-
-      wordsToGuess.current.splice(wordsToGuessIndex, 1);
-      wordsToGuess.current.push(word);
-
-      return word;
-    }, [diceNumber])
-
-    useEffect(() => {
-      setWordToGuess(getWordToGuess())
-    }, [getWordToGuess])
 
     let wordToGuessArray = Array.from(wordToGuess.word);
     let playerWordInputArray = Array.from(playerWordInput)
@@ -68,7 +36,6 @@ export default function QuestionModal({ dialogRef, turn, playerNames, diceNumber
         setIsSubmitted(false);
         setIsCorrect(false);
         wordIndex.current++;
-        setWordToGuess(getWordToGuess())
         setPlayerWordInput('');
       }, 1000)
     }
