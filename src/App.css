@@ -33,11 +33,11 @@
   }
 
   &:nth-of-type(2) {
-    background: linear-gradient(#2e31923d, #ffffff);
+    background: linear-gradient(#71bf4563, #ffffff);
   }
 
   &:nth-of-type(3) {
-    background: linear-gradient(#71bf4563, #ffffff);
+    background: linear-gradient(#2e31923d, #ffffff);
   }
 
   &:nth-of-type(4) {
@@ -49,11 +49,11 @@
   }
 
   &.lkg-playerboard__team--active:nth-of-type(2) {
-    background: linear-gradient(#2e3192, #575dff 90%)
+    background: linear-gradient(#71bf45, #b2e64a 90%)
   }
 
   &.lkg-playerboard__team--active:nth-of-type(3) {
-    background: linear-gradient(#71bf45, #b2e64a 90%)
+    background: linear-gradient(#2e3192, #575dff 90%)
   }
 
   &.lkg-playerboard__team--active:nth-of-type(4) {
@@ -119,11 +119,11 @@
 }
 
 .lkg-team:nth-of-type(2) path {
-  fill: #2e3192;
+  fill: #71bf45;
 }
 
 .lkg-team:nth-of-type(3) path {
-  fill: #71bf45;
+  fill: #2e3192;
 }
 
 .lkg-team:nth-of-type(4) path {
@@ -229,11 +229,11 @@
 }
 
 .lkg-dialog__header--player2 {
-  background: linear-gradient(to right, #2e3192, #575dff 90%)
+  background: linear-gradient(to right, #71bf45, #b2e64a 90%)
 }
 
 .lkg-dialog__header--player3 {
-  background: linear-gradient(to right, #71bf45, #b2e64a 90%)
+  background: linear-gradient(to right, #2e3192, #575dff 90%)
 }
 
 .lkg-dialog__header--player4 {

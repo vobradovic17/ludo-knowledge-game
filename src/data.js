@@ -48,18 +48,18 @@ const redHouses = [
   {x: 37.88, y: 47.16, occupied: false, occupiedBy: {player: null, figure: null}},
 ]
 
-const blueHouses = [
-  {x: 81.57, y: 47.16, occupied: false, occupiedBy: {player: null, figure: null}},
-  {x: 72.94, y: 47.16, occupied: false, occupiedBy: {player: null, figure: null}},
-  {x: 64.17, y: 47.16, occupied: false, occupiedBy: {player: null, figure: null}},
-  {x: 56, y: 47.16, occupied: false, occupiedBy: {player: null, figure: null}},
-]
-
 const greenHouses = [
   {x: 46.91, y: 12.63, occupied: false, occupiedBy: {player: null, figure: null}},
   {x: 46.91, y: 21.13, occupied: false, occupiedBy: {player: null, figure: null}},
   {x: 46.91, y: 29.9, occupied: false, occupiedBy: {player: null, figure: null}},
   {x: 46.91, y: 38.4, occupied: false, occupiedBy: {player: null, figure: null}},
+]
+
+const blueHouses = [
+  {x: 81.57, y: 47.16, occupied: false, occupiedBy: {player: null, figure: null}},
+  {x: 72.94, y: 47.16, occupied: false, occupiedBy: {player: null, figure: null}},
+  {x: 64.17, y: 47.16, occupied: false, occupiedBy: {player: null, figure: null}},
+  {x: 56, y: 47.16, occupied: false, occupiedBy: {player: null, figure: null}},
 ]
 
 const yellowHouses = [
@@ -71,9 +71,9 @@ const yellowHouses = [
 
 const redTrack = track.concat(redHouses);
 
-const blueTrack = track.slice(20).concat(track.slice(0,20)).concat(blueHouses);
-
 const greenTrack = track.slice(10).concat(track.slice(0,10)).concat(greenHouses);
+
+const blueTrack = track.slice(20).concat(track.slice(0,20)).concat(blueHouses);
 
 const yellowTrack = track.slice(30).concat(track.slice(0,30)).concat(yellowHouses);
 
@@ -84,18 +84,18 @@ const redPlayer = [
   { player: 0, figure: 3, position: -1, eligible: false, startingX: 12.37, startingY: 12.88, x: 12.37, y: 12.88 },
 ];
 
-const bluePlayer = [
-  {player: 1, figure: 0, position: -1, eligible: false, startingX: 81.57, startingY:  81.18, x: 81.57, y: 81.18 },
-  {player: 1, figure: 1, position: -1, eligible: false, startingX: 90.2, startingY:  81.18, x: 90.2, y: 81.18 },
-  {player: 1, figure: 2, position: -1, eligible: false, startingX: 81.57, startingY: 90.2, x: 81.57, y: 90.2 },
-  {player: 1, figure: 3, position: -1, eligible: false, startingX: 90.2, startingY: 90.2, x: 90.2, y: 90.2 }
+const greenPlayer = [
+  {player: 1, figure: 0, position: -1, eligible: false, startingX: 81.57, startingY: 3.86, x: 81.57, y: 3.86 },
+  {player: 1, figure: 1, position: -1, eligible: false, startingX: 90.2, startingY: 3.86, x: 90.2, y: 3.86 },
+  {player: 1, figure: 2, position: -1, eligible: false, startingX: 81.57, startingY: 12.88, x: 81.57, y: 12.88 },
+  {player: 1, figure: 3, position: -1, eligible: false, startingX: 90.2, startingY: 12.88, x: 90.2, y: 12.88 }
 ]
 
-const greenPlayer = [
-  {player: 2, figure: 0, position: -1, eligible: false, startingX: 81.57, startingY: 3.86, x: 81.57, y: 3.86 },
-  {player: 2, figure: 1, position: -1, eligible: false, startingX: 90.2, startingY: 3.86, x: 90.2, y: 3.86 },
-  {player: 2, figure: 2, position: -1, eligible: false, startingX: 81.57, startingY: 12.88, x: 81.57, y: 12.88 },
-  {player: 2, figure: 3, position: -1, eligible: false, startingX: 90.2, startingY: 12.88, x: 90.2, y: 12.88 }
+const bluePlayer = [
+  {player: 2, figure: 0, position: -1, eligible: false, startingX: 81.57, startingY:  81.18, x: 81.57, y: 81.18 },
+  {player: 2, figure: 1, position: -1, eligible: false, startingX: 90.2, startingY:  81.18, x: 90.2, y: 81.18 },
+  {player: 2, figure: 2, position: -1, eligible: false, startingX: 81.57, startingY: 90.2, x: 81.57, y: 90.2 },
+  {player: 2, figure: 3, position: -1, eligible: false, startingX: 90.2, startingY: 90.2, x: 90.2, y: 90.2 }
 ]
 
 const yellowPlayer = [
@@ -107,14 +107,14 @@ const yellowPlayer = [
 
 export const playersData = [
     redPlayer,
-    bluePlayer,
     greenPlayer,
+    bluePlayer,
     yellowPlayer
 ]
 
 export const playerTracksData = [
     redTrack,
-    blueTrack,
     greenTrack,
+    blueTrack,
     yellowTrack
 ]
