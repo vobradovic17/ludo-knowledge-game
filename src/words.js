@@ -305,7 +305,8 @@ export const words = [
         word: "worry",
         type: "verb",
         description: [
-            "To be troubled; to give way to mental anxiety or doubt."
+            "To be troubled",
+            "To give way to mental anxiety or doubt"
         ]
     },
     // second grade
@@ -404,8 +405,7 @@ export const words = [
         word: "edit",
         type: "noun",
         description: [
-            "A change to the text of a document",
-            "A change in the text of a file, a website or the code of software."
+            "A change to the text of a document"
         ]
     },
     {
@@ -792,13 +792,6 @@ export const words = [
         ]
     },
     {
-        word: "multiply",
-        type: "verb",
-        description: [
-            "To increase the amount, degree or number of (something)"
-        ]
-    },
-    {
         word: "occur",
         type: "verb",
         description: [
@@ -888,13 +881,6 @@ export const words = [
         type: "noun",
         description: [
             "An answer to a problem"
-        ]
-    },
-    {
-        word: "starve",
-        type: "verb",
-        description: [
-            "To die because of lack of food or of not eating; To be very hungry."
         ]
     },
     {
@@ -1142,7 +1128,6 @@ export const words = [
         word: "support",
         type: "verb",
         description: [
-            "To help keep from falling",
             "To back or favor a cause"
         ]
     },
@@ -1290,7 +1275,7 @@ export const words = [
         word: "evaluate",
         type: "verb",
         description: [
-            "To draw conclusions from examining; to assess; to appraise."
+            "To draw conclusions from examining; to assess."
         ]
     },
     {
@@ -1298,7 +1283,7 @@ export const words = [
         type: "verb",
         description: [
             "To draw or let out wholly; to drain completely.",
-            "To empty by drawing or letting out the contents.",
+            "To empty by drawing or letting out the contents",
             "To use up; to deplete, drain or expend wholly, or use until the supply comes to an end."
         ]
     },
@@ -1407,8 +1392,7 @@ export const words = [
         word: "primary",
         type: "adjective",
         description: [
-            "First or earliest in a group or series",
-            "Main; principal; chief; placed ahead of others."
+            "First or earliest in a group or series"
         ]
     },
     {
@@ -1476,6 +1460,885 @@ export const words = [
         type: "adjective",
         description: [
             "Standing, pointing, or moving straight up or down; parallel to the local direction of gravity; perpendicular to something horizontal."
+        ]
+    },
+    // sixth grade
+    {
+        word: "adjacent",
+        type: "adjective",
+        description: [
+            "Lying next to, close, or contiguous; neighboring; bordering on."
+        ]
+    },
+    {
+        word: "accumulate",
+        type: "verb",
+        description: [
+            "To heap up in a mass; to pile up; to collect or bring together (either literally or figuratively), often gradually and without active intent.",
+            "To gradually grow or increase in quantity or number"
+        ]
+    },
+    {
+        word: "adapt",
+        type: "verb",
+        description: [
+            "To make suitable; to make to correspond; to fit or suit.",
+            "To fit by alteration; to modify or remodel for a different purpose."
+        ]
+    },
+    {
+        word: "analyze",
+        type: "verb",
+        description: [
+            "To separate into the constituent parts, for the purpose of an examination of each separately."
+        ]
+    },
+    {
+        word: "anticipate",
+        type: "verb",
+        description: [
+            "To know of (something) before it happens; to expect."
+        ]
+    },
+    {
+        word: "artifact",
+        type: "noun",
+        description: [
+            "An object, such as a tool, ornament, or weapon of archaeological or historical interest, especially such an object found at an archaeological excavation."
+        ]
+    },
+    {
+        word: "catastrophe",
+        type: "noun",
+        description: [
+            "Any large and disastrous event of great significance",
+            "A disaster beyond expectations"
+        ]
+    },
+    {
+        word: "citizen",
+        type: "noun",
+        description: [
+            "A resident of a city or town",
+            "A legally recognized member of a state, with associated rights and obligations."
+        ]
+    },
+    {
+        word: "construct",
+        type: "verb",
+        description: [
+            "To build or form (something) by assembling parts"
+        ]
+    },
+    {
+        word: "continuous",
+        type: "adjective",
+        description: [
+            "Without stopping; without a break, cessation, or interruption."
+        ]
+    },
+    {
+        word: "contribute",
+        type: "verb",
+        description: [
+            "To give something that is or becomes part of a larger whole"
+        ]
+    },
+    {
+        word: "declare",
+        type: "verb",
+        description: [
+            "To assert or announce formally, officially, explicitly, or emphatically."
+        ]
+    },
+    {
+        word: "drastic",
+        type: "adjective",
+        description: [
+            "Having a strong or far-reaching effect; extreme, severe."
+        ]
+    },
+    {
+        word: "elaborate",
+        type: "adjective",
+        description: [
+            "Complex, detailed, or sophisticated."
+        ]
+    },
+    {
+        word: "encourage",
+        type: "verb",
+        description: [
+            "To mentally support; to motivate, give hope or spirit."
+        ]
+    },
+    {
+        word: "exaggerate",
+        type: "verb",
+        description: [
+            "To overstate, to describe more than the fact."
+        ]
+    },
+    {
+        word: "ferocious",
+        type: "adjective",
+        description: [
+            "Marked by extreme and violent energy"
+        ]
+    },
+    {
+        word: "frequency",
+        type: "noun",
+        description: [
+            "The rate of occurrence of anything",
+            "The relationship between incidence and time period"
+        ]
+    },
+    {
+        word: "genuine",
+        type: "adjective",
+        description: [
+            "Belonging to, or proceeding from the original stock; native."
+        ]
+    },
+    {
+        word: "government",
+        type: "noun",
+        description: [
+            "The state and its administration viewed as the ruling political power"
+        ]
+    },
+    {
+        word: "history",
+        type: "noun",
+        description: [
+            "The aggregate of past events"
+        ]
+    },
+    {
+        word: "hypothesis",
+        type: "noun",
+        description: [
+            "A tentative conjecture explaining an observation, phenomenon or scientific problem and that can be tested by further observation, investigation or experimentation.",
+            "An assumption taken to be true for the purpose of argument or investigation"
+        ]
+    },
+    {
+        word: "irrigate",
+        type: "verb",
+        description: [
+            "To supply (farmland) with water, by building ditches, pipes, etc."
+        ]
+    },
+    {
+        word: "massive",
+        type: "adjective",
+        description: [
+            "Very large in size or extent"
+        ]
+    },
+    {
+        word: "narrate",
+        type: "verb",
+        description: [
+            "To relate (a story or series of events) in speech or writing."
+        ]
+    },
+    {
+        word: "obedient",
+        type: "adjective",
+        description: [
+            "Willing to comply with the commands, orders, or instructions of those in authority."
+        ]
+    },
+    {
+        word: "oblivious",
+        type: "adjective",
+        description: [
+            "Lacking awareness; unmindful; unaware."
+        ]
+    },
+    {
+        word: "origin",
+        type: "noun",
+        description: [
+            "The beginning of something"
+        ]
+    },
+    {
+        word: "peculiar",
+        type: "adjective",
+        description: [
+            "Out of the ordinary; odd; strange; unusual."
+        ]
+    },
+    {
+        word: "priority",
+        type: "noun",
+        description: [
+            "An item's relative importance",
+            "A goal of a person or an organisation"
+        ]
+    },
+    {
+        word: "quote",
+        type: "noun",
+        description: [
+            "A statement attributed to a person"
+        ]
+    },
+    {
+        word: "realistic",
+        type: "adjective",
+        description: [
+            "Expressed or represented as being accurate, practicable, or not idealistic.",
+            "Relating to the representation of objects, actions or conditions as they actually are or were."
+        ]
+    },
+    {
+        word: "reinforce",
+        type: "verb",
+        description: [
+            "To strengthen, especially by addition or augmentation.",
+            "To encourage (a behavior or idea) through repeated stimulus"
+        ]
+    },
+    {
+        word: "retrieve",
+        type: "verb",
+        description: [
+            "To regain or get back something"
+        ]
+    },
+    {
+        word: "strategy",
+        type: "noun",
+        description: [
+            "The science and art of military command as applied to the overall planning and conduct of warfare",
+            "A plan of action intended to accomplish a specific goal"
+        ]
+    },
+    {
+        word: "substitute",
+        type: "noun",
+        description: [
+            "A replacement or stand-in for something that achieves a similar result or purpose"
+        ]
+    },
+    {
+        word: "suspense",
+        type: "noun",
+        description: [
+            "The emotion of anticipation and excitement regarding the outcome or climax of a book, film etc."
+        ]
+    },
+    {
+        word: "transfer",
+        type: "verb",
+        description: [
+            "To move or pass from one place, person or thing to another."
+        ]
+    },
+    {
+        word: "unanimous",
+        type: "adjective",
+        description: [
+            "Sharing the same views or opinions, and being in harmony or accord."
+        ]
+    },
+    {
+        word: "unique",
+        type: "adjective",
+        description: [
+            "Being the only one of its kind; unequaled, unparalleled or unmatched."
+        ]
+    },
+    {
+        word: "variable",
+        type: "noun",
+        description: [
+            "A quantity that may assume any one of a set of values"
+        ]
+    },
+    {
+        word: "viewpoint",
+        type: "noun",
+        description: [
+            "The position from which something is observed or considered"
+        ]
+    },
+    // seventh grade
+    {
+        word: "abdicate",
+        type: "verb",
+        description: [
+            "To relinquish or renounce a throne, or other high office or dignity."
+        ]
+    },
+    {
+        word: "acknowledge",
+        type: "verb",
+        description: [
+            "To recognize as a fact or truth"
+        ]
+    },
+    {
+        word: "acquire",
+        type: "verb",
+        description: [
+            "To get; to gain, usually by one's own exertions."
+        ]
+    },
+    {
+        word: "adequate",
+        type: "adjective",
+        description: [
+            "Equal to or fulfilling some requirement"
+        ]
+    },
+    {
+        word: "allege",
+        type: "verb",
+        description: [
+            "To make a claim as justification or proof; to make an assertion without proof."
+        ]
+    },
+    {
+        word: "allocate",
+        type: "verb",
+        description: [
+            "To distribute according to a plan"
+        ]
+    },
+    {
+        word: "alternative",
+        type: "adjective",
+        description: [
+            "Other; different from something else.",
+            "Not traditional, outside the mainstream, underground."
+        ]
+    },
+    {
+        word: "antagonize",
+        type: "verb",
+        description: [
+            "To work against; to oppose (especially to incite a reaction)."
+        ]
+    },
+    {
+        word: "attribute",
+        type: "noun",
+        description: [
+            "A characteristic or quality of a thing"
+        ]
+    },
+    {
+        word: "authentic",
+        type: "adjective",
+        description: [
+            "Of the same origin as claimed; genuine."
+        ]
+    },
+    {
+        word: "belligerent",
+        type: "noun",
+        description: [
+            "A state or other armed participant in warfare"
+        ]
+    },
+    {
+        word: "bewilder",
+        type: "verb",
+        description: [
+            "To confuse, disorientate, or puzzle someone, especially with many different choices."
+        ]
+    },
+    {
+        word: "boycott",
+        type: "verb",
+        description: [
+            "To abstain, either as an individual or a group, from using, buying, or dealing with someone or some organization as an expression of protest."
+        ]
+    },
+    {
+        word: "competent",
+        type: "adjective",
+        description: [
+            "Having sufficient skill, knowledge, ability, or qualifications."
+        ]
+    },
+    {
+        word: "component",
+        type: "noun",
+        description: [
+            "A smaller, self-contained part of a larger entity."
+        ]
+    },
+    {
+        word: "conclusive",
+        type: "adjective",
+        description: [
+            "Providing an end to something"
+        ]
+    },
+    {
+        word: "condemn",
+        type: "verb",
+        description: [
+            "To strongly criticise or denounce"
+        ]
+    },
+    {
+        word: "confront",
+        type: "verb",
+        description: [
+            "To stand or meet facing, especially in competition, hostility or defiance.",
+            "To bring someone face to face with something"
+        ]
+    },
+    {
+        word: "consecutive",
+        type: "adjective",
+        description: [
+            "Following, in succession, without interruption."
+        ]
+    },
+    {
+        word: "devour",
+        type: "verb",
+        description: [
+            "To eat quickly, greedily, hungrily, or ravenously."
+        ]
+    },
+    {
+        word: "eligible",
+        type: "adjective",
+        description: [
+            "Allowed to and meeting the necessary conditions required to participate in or be chosen for something"
+        ]
+    },
+    {
+        word: "exonerated",
+        type: "adjective",
+        description: [
+            "Freed from any question of guilt, acquitted."
+        ]
+    },
+    {
+        word: "formidable",
+        type: "adjective",
+        description: [
+            "Causing fear, dread, awe, or discouragement as a result of size, strength, or some other impressive feature; commanding respect; causing wonder or astonishment."
+        ]
+    },
+    {
+        word: "impartial",
+        type: "adjective",
+        description: [
+            "Treating all parties, rivals, or disputants equally."
+        ]
+    },
+    {
+        word: "indifferent",
+        type: "adjective",
+        description: [
+            "Indicating or reflecting a lack of concern or care"
+        ]
+    },
+    {
+        word: "inevitable",
+        type: "adjective",
+        description: [
+            "Impossible to avoid or prevent"
+        ]
+    },
+    {
+        word: "initiate",
+        type: "verb",
+        description: [
+            "To begin; to start."
+        ]
+    },
+    {
+        word: "intimidate",
+        type: "verb",
+        description: [
+            "To cause to feel fear or nervousness"
+        ]
+    },
+    {
+        word: "legendary",
+        type: "adjective",
+        description: [
+            "Having unimaginable greatness; excellent to such an extent to evoke stories."
+        ]
+    },
+    {
+        word: "ludicrous",
+        type: "adjective",
+        description: [
+            "Idiotic or unthinkable, often to the point of being funny; amusing by being plainly incongruous or absurd."
+        ]
+    },
+    {
+        word: "mandatory",
+        type: "adjective",
+        description: [
+            "Obligatory; required or commanded by authority."
+        ]
+    },
+    {
+        word: "omit",
+        type: "verb",
+        description: [
+            "To leave out or exclude"
+        ]
+    },
+    {
+        word: "oppress",
+        type: "verb",
+        description: [
+            "To keep down by unjust force"
+        ]
+    },
+    {
+        word: "perceive",
+        type: "verb",
+        description: [
+            "To become aware of, through the physical senses, to see; to understand."
+        ]
+    },
+    {
+        word: "punctual",
+        type: "adjective",
+        description: [
+            "Prompt; on time."
+        ]
+    },
+    {
+        word: "relinquish",
+        type: "verb",
+        description: [
+            "To give up, abandon or retire from something; to trade away."
+        ]
+    },
+    {
+        word: "resolve",
+        type: "verb",
+        description: [
+            "To find a solution to (a problem)."
+        ]
+    },
+    {
+        word: "rudimentary",
+        type: "adjective",
+        description: [
+            "Basic; minimal; with less than, or only the minimum, necessary."
+        ]
+    },
+    {
+        word: "treason",
+        type: "noun",
+        description: [
+            "An act of betrayal (of one's own country)"
+        ]
+    },
+    {
+        word: "ambiguous",
+        type: "adjective",
+        description: [
+            "Open to multiple interpretations"
+        ]
+    },
+    {
+        word: "anonymous",
+        type: "adjective",
+        description: [
+            "Lacking a name; not named."
+        ]
+    },
+    {
+        word: "anthology",
+        type: "noun",
+        description: [
+            "A collection of literary works, such as poems or short stories, especially a collection from various authors."
+        ]
+    },
+    {
+        word: "apathy",
+        type: "noun",
+        description: [
+            "Lack of emotion or motivation; lack of interest or enthusiasm towards something; disinterest (in something)."
+        ]
+    },
+    {
+        word: "apprehend",
+        type: "verb",
+        description: [
+            "To be or become aware of (something); to perceive."
+        ]
+    },
+    {
+        word: "assimilate",
+        type: "verb",
+        description: [
+            "To absorb (a person or people) into a community or culture"
+        ]
+    },
+    {
+        word: "assumption",
+        type: "noun",
+        description: [
+            "The act of taking for granted, or supposing a thing without proof."
+        ]
+    },
+    {
+        word: "audacious",
+        type: "adjective",
+        description: [
+            "Showing willingness to take bold risks; recklessly daring."
+        ]
+    },
+    {
+        word: "authority",
+        type: "noun",
+        description: [
+            "Power or right to make or enforce rules, give orders, or impose obligation; or a position having such power or right.",
+            "Persons, regarded collectively, who occupy official positions of power; police or law enforcement."
+        ]
+    },
+    {
+        word: "ban",
+        type: "verb",
+        description: [
+            "To prohibit; to interdict; to proscribe; to forbid or block from participation."
+        ]
+    },
+    {
+        word: "capable",
+        type: "adjective",
+        description: [
+            "Able and efficient; having the ability needed for a specific task; having the disposition to do something."
+        ]
+    },
+    {
+        word: "commence",
+        type: "verb",
+        description: [
+            "To begin, start."
+        ]
+    },
+    {
+        word: "concise",
+        type: "adjective",
+        description: [
+            "Brief, yet including all important information."
+        ]
+    },
+    {
+        word: "confiscate",
+        type: "verb",
+        description: [
+            "To use one's authority to lay claim to and separate a possession from its holder"
+        ]
+    },
+    {
+        word: "depict",
+        type: "verb",
+        description: [
+            "To render a representation of something, using words, sounds, images, or other means."
+        ]
+    },
+    {
+        word: "derive",
+        type: "verb",
+        description: [
+            "To obtain or receive (something) from something else"
+        ]
+    },
+    {
+        word: "embark",
+        type: "verb",
+        description: [
+            "To go aboard a craft or vessel for transportation"
+        ]
+    },
+    {
+        word: "compass",
+        type: "noun",
+        description: [
+            "A magnetic or electronic device used to determine the cardinal directions (usually magnetic or true north)."
+        ]
+    },
+    {
+        word: "endeavor",
+        type: "noun",
+        description: [
+            "A sincere attempt; a determined or assiduous effort towards a specific goal; assiduous or persistent activity."
+        ]
+    },
+    {
+        word: "evoke",
+        type: "verb",
+        description: [
+            "To call out; to draw out or bring forth."
+        ]
+    },
+    {
+        word: "feasible",
+        type: "adjective",
+        description: [
+            "Able to be done in practice"
+        ]
+    },
+    {
+        word: "focus",
+        type: "noun",
+        description: [
+            "A point at which reflected or refracted rays of light converge"
+        ]
+    },
+    {
+        word: "imminent",
+        type: "adjective",
+        description: [
+            "About to happen, occur, or take place very soon."
+        ]
+    },
+    {
+        word: "imperative",
+        type: "adjective",
+        description: [
+            "Essential; crucial; extremely important."
+        ]
+    },
+    {
+        word: "integrate",
+        type: "verb",
+        description: [
+            "To include as a constituent part or functionality",
+            "To join a group or an environment harmoniously; to make oneself fit in."
+        ]
+    },
+    {
+        word: "interrogate",
+        type: "verb",
+        description: [
+            "To question, especially in a thorough or aggressive manner."
+        ]
+    },
+    {
+        word: "merge",
+        type: "verb",
+        description: [
+            "To combine into a whole"
+        ]
+    },
+    {
+        word: "modify",
+        type: "verb",
+        description: [
+            "To change part of"
+        ]
+    },
+    {
+        word: "mutiny",
+        type: "noun",
+        description: [
+            "An organized rebellion against a legally constituted authority, especially by seamen against their officers."
+        ]
+    },
+    {
+        word: "novice",
+        type: "noun",
+        description: [
+            "A beginner; one who is not very familiar or experienced in a particular subject."
+        ]
+    },
+    {
+        word: "obsolete",
+        type: "adjective",
+        description: [
+            "No longer in use; gone into disuse; disused or neglected (often in favour of something newer)."
+        ]
+    },
+    {
+        word: "precise",
+        type: "adjective",
+        description: [
+            "Both exact and accurate"
+        ]
+    },
+    {
+        word: "prevalent",
+        type: "adjective",
+        description: [
+            "Widespread or preferred; superior in frequency or dominant."
+        ]
+    },
+    {
+        word: "procedure",
+        type: "noun",
+        description: [
+            "A particular method for performing a task",
+            "A series of small tasks or steps taken to accomplish an end"
+        ]
+    },
+    {
+        word: "profound",
+        type: "adjective",
+        description: [
+            "Very deep; very serious."
+        ]
+    },
+    {
+        word: "pseudonym",
+        type: "noun",
+        description: [
+            "A fictitious name (more literally, a false name), as those used by writers and movie stars."
+        ]
+    },
+    {
+        word: "rebel",
+        type: "noun",
+        description: [
+            "A person who resists an established authority, often violently."
+        ]
+    },
+    {
+        word: "resilient",
+        type: "adjective",
+        description: [
+            "Returning quickly to normal after damaging events or conditions"
+        ]
+    },
+    {
+        word: "simulate",
+        type: "verb",
+        description: [
+            "To model, replicate, duplicate the behavior, appearance or properties of."
+        ]
+    },
+    {
+        word: "specific",
+        type: "adjective",
+        description: [
+            "Serving to identify a particular thing with little risk of mistaking something else for it"
+        ]
+    },
+    {
+        word: "spontaneous",
+        type: "adjective",
+        description: [
+            "Self-generated; happening without any apparent external cause.",
+            "Done by one's own free choice, or without planning."
+        ]
+    },
+    {
+        word: "universal",
+        type: "adjective",
+        description: [
+            "Common to all society; worldwide."
         ]
     },
 ]
