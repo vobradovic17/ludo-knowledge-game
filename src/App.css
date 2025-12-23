@@ -353,6 +353,17 @@
   }
 }
 
+
+.lkg-hint-first {
+  color: #eaeaea;
+  text-shadow: 1px 1px 1px #000, -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000;
+}
+
+.lkg-hint-first--submitted  {
+    color: transparent;
+    text-shadow: none;
+}
+
 .lkg-hint {
   text-transform: none;
   border-bottom: none;

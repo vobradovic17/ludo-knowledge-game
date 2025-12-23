@@ -6,9 +6,11 @@ export default function Question({ wordToGuess, wordIndex, wordToGuessArray, pla
     const [hintLetters, setHintLetters] = useState([])
   
     let className = 'lkg-dialog__guess-word';
+    let firstLetterClass = 'lkg-hint-first'
 
     if (isSubmitted) {
         className += ' lkg-dialog__guess-word--submitted'
+        firstLetterClass += ' lkg-hint-first--submitted'
         if (isCorrect) {
             className += ' lkg-dialog__guess-word--correct'
         }
@@ -63,7 +65,7 @@ export default function Question({ wordToGuess, wordIndex, wordToGuessArray, pla
         <div className={className}>
           {wordToGuessArray.map((letter, index) => {
             if (index == 0 && !playerWordInputArray[0]) {
-              return <span key={`word-${wordIndex}-${index}`}>{letter}</span>;
+              return <span className={firstLetterClass} key={`word-${wordIndex}-${index}`}>{letter}</span>;
             } else {
               return (
                 <span key={`word-${wordIndex}-${index}`}>
@@ -73,7 +75,7 @@ export default function Question({ wordToGuess, wordIndex, wordToGuessArray, pla
                     hintLetters[index] &&
                     !isSubmitted
                   ) ? (
-                    <div className={index > 0 && playerWordInputArray[index] ? "lkg-letter" : ""}>
+                    <div className={playerWordInputArray[index] ? "lkg-letter" : ""}>
                       {playerWordInputArray[index]?.toLowerCase()}
                     </div>
                   ) : (
