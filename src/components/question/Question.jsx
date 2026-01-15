@@ -5,18 +5,16 @@ export default function Question({ wordToGuess, wordIndex, wordToGuessArray, pla
     const [description, setDescription] = useState('')
     const [hintLetters, setHintLetters] = useState([])
   
-    let className = 'lkg-dialog__guess-word';
+    let wordClass = 'lkg-dialog__guess-word';
     let firstLetterClass = 'lkg-hint-first'
 
     if (isSubmitted) {
-        className += ' lkg-dialog__guess-word--submitted'
+        wordClass += ` lkg-dialog__guess-word--submitted ${
+          isCorrect
+            ? "lkg-dialog__guess-word--correct"
+            : "lkg-dialog__guess-word--wrong"
+        }`;
         firstLetterClass += ' lkg-hint-first--submitted'
-        if (isCorrect) {
-            className += ' lkg-dialog__guess-word--correct'
-        }
-        else {
-            className += ' lkg-dialog__guess-word--wrong'
-        }
     }
 
     const getRandomHintIndex = useCallback(function getRandomHintIndex() {
@@ -62,7 +60,7 @@ export default function Question({ wordToGuess, wordIndex, wordToGuessArray, pla
         <div className="lkg-dialog__description">
           {description}
         </div>
-        <div className={className}>
+        <div className={wordClass}>
           {wordToGuessArray.map((letter, index) => {
             if (index == 0 && !playerWordInputArray[0]) {
               return <span className={firstLetterClass} key={`word-${wordIndex}-${index}`}>{letter}</span>;

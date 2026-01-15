@@ -11,7 +11,7 @@ import "./App.css";
 function App() {
   const [diceNumber, setDiceNumber] = useState(1);
   const [turn, setTurn] = useState(0);
-  const [diceOn, setDiceOn] = useState(false)
+  const [diceDisabled, setDiceDisabled] = useState(false)
   const [timerOn, setTimerOn] = useState(false)
   const [gameOver, setGameOver] = useState(false)
   const [players, setPlayers] = useState(cloneDeep(playersData));
@@ -30,6 +30,39 @@ function App() {
   const dialogRef = useRef();
   const wordsToGuess = useRef(shuffle(words))
 
+  function getDiceNumber() {
+    return Math.floor(Math.random() * 6) + 1
+  }
+
+  function nextTurn() {
+    setTurn((oldTurn) => {
+      let newTurn = oldTurn < 3 ? oldTurn + 1 : 0;
+      setTurn(newTurn);
+
+      totalCasts.current = numberOfCasts.current = players[newTurn].every(figure => {
+        return figure.position == -1
+      }) ? 3 : 1;
+    });
+  }
+
+  function castAgain() {
+    totalCasts.current = numberOfCasts.current = 1;
+  }
+
+  function clearEligible(playerData) {
+    playerData.forEach((figure) => {
+      figure.eligible = false;
+    });
+  }
+
+  function openDialog() {
+    dialogRef.current.show();
+  }
+
+  function closeDialog() {
+    dialogRef.current.close();
+  }
+
   function rollDice() {
     let player = players[turn];
 
@@ -37,21 +70,19 @@ function App() {
       return figure.position == -1;
     })
 
-    setDiceOn(true);
+    setDiceDisabled(true);
 
-    let diceNum = Math.floor(Math.random() * 6) + 1;
+    let diceNum = getDiceNumber();
     
     if (allHome && diceNum <= 4) {
-      diceNum = Math.floor(Math.random() * 6) + 1;
+      diceNum = getDiceNumber();
     }
-    setDiceNumber(() => {
-      return diceNum;
-    });
+    setDiceNumber(diceNum);
     numberOfCasts.current--;
-    checkEligible(diceNum);
+    checkEligibleFigures(diceNum);
   }
 
-  function checkEligible(diceNum) {
+  function checkEligibleFigures(diceNum) {
     let player = players[turn];
     let playerTrack = playerTracks.current[turn];
 
@@ -74,34 +105,29 @@ function App() {
 
     if (!hasEligible) {
       setTimeout(() => {
-        setDiceOn(false);
+        setDiceDisabled(false);
       }, 1000)
     }
 
     if (!hasEligible && !numberOfCasts.current) {
       setTimeout(() => {
-        setTurn((oldTurn) => {
-          let newTurn = oldTurn < 3 ? oldTurn + 1 : 0;
-          setTurn(newTurn);
-
-          totalCasts.current = numberOfCasts.current = players[newTurn].every(figure => {
-            return figure.position == -1
-          }) ? 3 : 1;
-        });
+        nextTurn()
       }, 1000)
       return;
     }
 
-    setPlayers((oldPlayersData) => {
-      const newPlayersData = [
-        ...oldPlayersData.map((player) => {
-          return [...player];
-        }),
-      ];
-      return newPlayersData;
-    });
+    if (hasEligible) {
+      setPlayers((oldPlayersData) => {
+        const newPlayersData = [
+          ...oldPlayersData.map((player) => {
+            return [...player];
+          }),
+        ];
+        return newPlayersData;
+      });
+    }
   }
-
+    
   function handleMove(figure) {
     if (figure.eligible) {
       activeFigure.current = figure;
@@ -116,7 +142,7 @@ function App() {
 
   function openQuestion() {
     setWordToGuess(getWordToGuess())
-    dialogRef.current.show();
+    openDialog();
     setTimerOn(true);
   }
 
@@ -129,6 +155,7 @@ function App() {
       let isOpponent = playerTrack[newPosition]?.occupiedBy.player != turn
 
       for (let i = 0; i < diceNumber; i++) {
+        // figure move to final position in a dice cast or initial move from starting position to track
         if (i == diceNumber - 1 || figure.position == -1) {
           setTimeout(() => {
             figure.position = newPosition
@@ -137,27 +164,34 @@ function App() {
             let playerToRemove = null;
             let figureToRemove = null;
 
+            // check if new position is occupied by opponent
             if (isOccupied && isOpponent) {
               remove = true;
               playerToRemove = playerTrack[newPosition].occupiedBy.player;
               figureToRemove = playerTrack[newPosition].occupiedBy.figure;
             }
 
+            // set new player position on track
             playerTrack[newPosition].occupied = true;
             playerTrack[newPosition].occupiedBy.player = figure.player;
             playerTrack[newPosition].occupiedBy.figure = figure.figure;
 
+            // remove old player position on track
             if (oldPosition > -1) {
               playerTrack[oldPosition].occupied = false;
               playerTrack[oldPosition].occupiedBy.player = null;
               playerTrack[oldPosition].occupiedBy.figure = null;
             }
 
+            // update player data
             setPlayers((oldPlayersData) => {
               const newPlayersData = [...oldPlayersData.map((player) => {
                 return [...player];
               })];
 
+              clearEligible(newPlayersData[turn]);
+
+              // move figure to next position
               let newX = playerTrack[newPosition].x;
               let newY = playerTrack[newPosition].y;
 
@@ -167,19 +201,17 @@ function App() {
               let figureIndex = figure.figure;
               newPlayersData[turn][figureIndex] = figure;
 
+              // move opponent figure to starting position
               if (remove) {
                 newPlayersData[playerToRemove][figureToRemove].position = -1;
                 newPlayersData[playerToRemove][figureToRemove].x = newPlayersData[playerToRemove][figureToRemove].startingX;
                 newPlayersData[playerToRemove][figureToRemove].y = newPlayersData[playerToRemove][figureToRemove].startingY;
               }
 
-              newPlayersData[turn].forEach((figure) => {
-                figure.eligible = false;
-              });
-
               return newPlayersData;
             });
 
+            // check if all player figures are on finishing positions
             let playerWins = playerTrack.slice(-4).every(position => {
               return position.occupied
             })
@@ -190,37 +222,34 @@ function App() {
             }
 
             setTimeout(() => {
-              setDiceOn(false);
+              setDiceDisabled(false);
             }, 1000)
 
             if (diceNumber == 6) {
-              totalCasts.current = numberOfCasts.current = 1;
+              castAgain();
               return;
             }
 
             setTimeout(() => {
-              setTurn((oldTurn) => {
-                let newTurn = oldTurn < 3 ? oldTurn + 1 : 0;
-                setTurn(newTurn);
-
-                totalCasts.current = numberOfCasts.current = players[newTurn].every(figure => {
-                  return figure.position == -1
-                }) ? 3 : 1;
-
-              });
+              nextTurn()
             }, 1000)
           }, 800 * i)
           break;
         }
+        // figure move by position before final position
         else {
           setTimeout(() => {
             figure.position = oldPosition + (i + 1);
 
+            // update player data
             setPlayers((oldPlayersData) => {
               const newPlayersData = [...oldPlayersData.map((player) => {
                 return [...player];
               })];
 
+              clearEligible(newPlayersData[turn]);
+
+              // move figure to next position
               let newX = playerTrack[figure.position].x;
               let newY = playerTrack[figure.position].y;
 
@@ -229,10 +258,6 @@ function App() {
 
               let figureIndex = figure.figure;
               newPlayersData[turn][figureIndex] = figure;
-
-              newPlayersData[turn].forEach((figure) => {
-                figure.eligible = false;
-              });
 
               return newPlayersData;
             });
@@ -276,17 +301,19 @@ function App() {
     totalCasts.current = numberOfCasts.current = 3;
 
     setDiceNumber(1);
-    setDiceOn(false);
+    setDiceDisabled(false);
     setTurn(0)
     setGameOver(false);
   }
 
   function checkWord(playerWord, wordToGuess) {
     let wordLength = wordToGuess.word.length;
+    let playerAnswer = playerWord.slice(0, wordLength).toLowerCase();
+    let correctAnswer = wordToGuess.word.toLowerCase()
 
-    if (playerWord.slice(0, wordLength).toLowerCase() == wordToGuess.word.toLowerCase()) {
+    if (playerAnswer == correctAnswer) {
       setTimeout(() => {
-        dialogRef.current.close();
+        closeDialog();
         setTimerOn(false);
         setTimeout(() => {
           moveFigure(activeFigure.current)
@@ -296,7 +323,7 @@ function App() {
     }
     else {
       setTimeout(() => {
-        dialogRef.current.close();
+        closeDialog();
         setTimerOn(false);
         setTimeout(() => {
           setPlayers((oldPlayersData) => {
@@ -304,27 +331,18 @@ function App() {
               return [...player];
             })];
     
-            newPlayersData[turn].forEach((figure) => {
-              figure.eligible = false;
-            });
+            clearEligible(newPlayersData[turn]);
     
             return newPlayersData;
           });
-          setDiceOn(false);
+          setDiceDisabled(false);
           
           if (diceNumber == 6) {
-            totalCasts.current = numberOfCasts.current = 1;
+            castAgain();
           }
           else {
             setDiceNumber(1);
-            setTurn((oldTurn) => {
-              let newTurn = oldTurn < 3 ? oldTurn + 1 : 0;
-              setTurn(newTurn);
-    
-              totalCasts.current = numberOfCasts.current = players[newTurn].every(figure => {
-                return figure.position == -1
-              }) ? 3 : 1;
-            });
+            nextTurn();
           }
         }, 300)
       }, 1000)
@@ -348,7 +366,7 @@ function App() {
               setPlayerNames={setPlayerNames}
               diceNumber={diceNumber}
               rollDice={rollDice}
-              diceOn={diceOn}
+              diceDisabled={diceDisabled}
               totalCasts={totalCasts}
               numberOfCasts={numberOfCasts}
             />

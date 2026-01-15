@@ -1,7 +1,7 @@
 import PlayerInfo from "./PlayerInfo";
 import DiceBoard from "../dice/DiceBoard";
 
-export default function PlayerBoard({ team, turn, playerNames, setPlayerNames, diceNumber, rollDice, diceOn, totalCasts, numberOfCasts }) {
+export default function PlayerBoard({ team, turn, playerNames, setPlayerNames, diceNumber, rollDice, diceDisabled, totalCasts, numberOfCasts }) {
 
     let onTurn = team == turn;
 
@@ -22,7 +22,7 @@ export default function PlayerBoard({ team, turn, playerNames, setPlayerNames, d
           <DiceBoard
             diceNumber={diceNumber}
             rollDice={rollDice}
-            diceOn={diceOn}
+            diceDisabled={diceDisabled}
             totalCasts={totalCasts}
             numberOfCasts={numberOfCasts}
           />
