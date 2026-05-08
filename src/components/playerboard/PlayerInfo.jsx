@@ -1,4 +1,9 @@
-export default function PlayerInfo({ team, playerNames, setPlayerNames }) {
+import { useContext } from "react";
+import { LudoContext } from "../../store/context";
+
+export default function PlayerInfo({ team }) {
+    const { playerNames, setPlayerNames } = useContext(LudoContext);
+
     let playerName = playerNames[team].name;
 
     function handleInput(event) {

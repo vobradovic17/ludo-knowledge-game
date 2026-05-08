@@ -5,7 +5,12 @@ import Dice4 from "./Dice4"
 import Dice5 from "./Dice5"
 import Dice6 from "./Dice6"
 
-export default function DiceImage({ diceNumber, totalCasts, numberOfCasts }) {
+import { useContext } from "react";
+import { LudoContext } from "../../store/context";
+
+export default function DiceImage() {
+    const { diceNumber, totalCasts, numberOfCasts } = useContext(LudoContext);
+
     let diceImages = [
         <Dice1 />,
         <Dice2 />,

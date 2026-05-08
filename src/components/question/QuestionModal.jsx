@@ -5,8 +5,12 @@ import Input from './Input.jsx'
 import QuestionTimer from './QuestionTimer.jsx'
 import Footer from './Footer.jsx'
 
+import { useContext } from "react";
+import { LudoContext } from "../../store/context";
 
-export default function QuestionModal({ dialogRef, turn, playerNames, diceNumber, totalCasts, numberOfCasts, timerOn, wordToGuess, checkWord }) {
+export default function QuestionModal() {
+    const { dialogRef, timerOn, wordToGuess, checkWord } = useContext(LudoContext);
+
     const [playerWordInput, setPlayerWordInput] = useState('')
     const [isSubmitted, setIsSubmitted] = useState(false)
     const [isCorrect, setIsCorrect] = useState(false)
@@ -43,13 +47,7 @@ export default function QuestionModal({ dialogRef, turn, playerNames, diceNumber
     return (
       <dialog className="lkg-dialog" ref={dialogRef}>
         <div className="dialog-wrapper">
-          <Header
-            turn={turn}
-            playerNames={playerNames}
-            diceNumber={diceNumber}
-            totalCasts={totalCasts}
-            numberOfCasts={numberOfCasts}
-          />
+          <Header/>
           <div className="lkg-dialog__body">
             <Question
               wordToGuess={wordToGuess}

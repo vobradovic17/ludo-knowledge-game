@@ -1,32 +1,25 @@
 import PlayerInfo from "./PlayerInfo";
 import DiceBoard from "../dice/DiceBoard";
 
-export default function PlayerBoard({ team, turn, playerNames, setPlayerNames, diceNumber, rollDice, diceDisabled, totalCasts, numberOfCasts }) {
+import { useContext } from "react";
+import { LudoContext } from "../../store/context";
 
-    let onTurn = team == turn;
+export default function PlayerBoard({ team }) {
 
-    let className = 'lkg-playerboard__team';
+  const { turn } = useContext(LudoContext);
 
-    if (onTurn) {
-        className += ' lkg-playerboard__team--active'
-    }
+  let onTurn = team == turn;
 
-    return (
-      <div className={className}>
-        <PlayerInfo
-          team={team}
-          playerNames={playerNames}
-          setPlayerNames={setPlayerNames}
-        />
-        {onTurn && (
-          <DiceBoard
-            diceNumber={diceNumber}
-            rollDice={rollDice}
-            diceDisabled={diceDisabled}
-            totalCasts={totalCasts}
-            numberOfCasts={numberOfCasts}
-          />
-        )}
-      </div>
-    );
+  let className = 'lkg-playerboard__team';
+
+  if (onTurn) {
+      className += ' lkg-playerboard__team--active'
+  }
+
+  return (
+    <div className={className}>
+      <PlayerInfo team={team}/>
+      {onTurn && <DiceBoard/>}
+    </div>
+  );
 }

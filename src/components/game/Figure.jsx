@@ -1,6 +1,11 @@
 import FigureIcon from "./FigureIcon"
 
-export default function Figure({ figure, turn, handleMove }) {
+import { useContext } from "react";
+import { LudoContext } from "../../store/context";
+
+export default function Figure({ figure }) {
+    const { turn, handleMove } = useContext(LudoContext);
+
     let className = 'lkg-figure';
 
     if (figure.eligible) {

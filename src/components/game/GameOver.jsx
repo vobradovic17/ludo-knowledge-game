@@ -1,4 +1,9 @@
-export default function GameOver({ turn, playerNames, resetGame }) {
+import { useContext } from "react";
+import { LudoContext } from "../../store/context";
+
+export default function GameOver() {
+    const { turn, playerNames, resetGame } = useContext(LudoContext);
+
     return (
         <div className="lkg-game-over">
             <div className="lkg-game-over__message">
